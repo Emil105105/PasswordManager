@@ -1,0 +1,52 @@
+PasswortManager
+ruhezustand
+beenden
+Name
+Url
+App
+Benutzername
+Passwort
+kopieren
+anzeigen
+verstecken
+generieren
+bearbeiten
+Einstellungen
+Über
+hinzufügen
+Copyright(c) 2020, 2021 Martin S. Merkli
+Dieses Programm ist freie (bezogen auf Freiheit) und quelloffene Software und lizenzsiert unter der GNU GPL3. Besuchen Sie <https://www.gnu.org/licenses/> für mehr Informationen.
+Willkommen
+Geben Sie ein Passwort ein:
+Das Passwort ist sicher.
+Das Passwort ist nicht sicher.
+Wiederholen Sie das Passwort:
+Ungültiges Passwort
+Fortfahren
+Passwörter stimmen nicht überein.
+Beispiel
+Geben Sie Ihr Passwort ein:
+falsches Passwort
+Sie haben das falsche Passwort eingegeben.
+Datensicherung
+Bitte vergessen Sie nicht, die Daten (passwords.bin und config.txt) zu sichern.
+Passwörter
+Erfolg
+Das Passwort wurde erflogreich in die Zwischenablage kopiert.
+Warnung
+Das aktuelle Passwort wird gelöscht.
+Möchten Sie wirklich fortfahren?
+Passwort generieren
+Länge des Passworts:
+Passwort vergessen
+Falls Sie ihr Passwort vergessen haben, bitte kontaktieren Sie den Support.
+Datensicherungs Hinweis
+Passwort ändern
+Ungültige Eingabe(n)
+Bitte geben Sie das alte Passwort ein:
+Geben Sie ein neues Passwort ein:
+Wiederholen Sie das neue Passwort:
+Abbrechen
+Fehler
+Etwas ist schief gelaufen.
+Bitte kontaktieren Sie den Support.

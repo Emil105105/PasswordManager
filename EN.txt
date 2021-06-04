@@ -1,0 +1,52 @@
+PasswordManager
+lock
+quit
+name
+url
+app
+username
+password
+copy
+show
+hide
+generate
+edit
+settings
+about
+add new
+Copyright(c) Martin S. Merkli
+This program is free (in terms of freedom) and open-source software and is licensed under the GNU GPL3. Visit <https://www.gnu.org/licenses/> for more information.
+Welcome
+Please enter a password:
+The password is secure.
+The password is not secure.
+Repeat the password:
+Password is not valid
+continue
+Passwords don't match
+example
+Please enter your password:
+wrong password
+You have entered the incorrect password.
+Backup
+Do not forget to backup your data (passwords.bin and config.txt).
+passwords
+Success
+The password was successfully copied to the clipboard.
+Warning
+The current password will be deleted.
+Do you want to continue?
+Generate password
+Length of the password:
+forgot password
+If you forgot your password please contact the support.
+backup message
+change password
+invalid input(s)
+Please enter the old password:
+Enter a new password:
+Repeat the new password:
+cancel
+Error
+Something went wrong.
+Please contact the support.
