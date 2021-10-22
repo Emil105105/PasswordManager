@@ -16,20 +16,58 @@
 
 
 import hashlib
-import tkinter as tk
-from tkinter import messagebox
 from ast import literal_eval
 import sys
 import os
 import time
 import random
+import subprocess
+import base64
+
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+
+install('pycryptodome')
+install('tk')
+from Crypto.Cipher import AES
+from Crypto import Random
+import tkinter as tk
+from tkinter import messagebox
+
+
+class AESCipher(object):
+
+    def __init__(self, key):
+        self.bs = AES.block_size
+        self.key = hashlib.sha256(key).digest()
+
+    def encrypt(self, raw):
+        raw = self._pad(raw)
+        iv = Random.new().read(AES.block_size)
+        cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        return base64.b64encode(iv + cipher.encrypt(raw.encode()))
+
+    def decrypt(self, enc):
+        enc = base64.b64decode(enc)
+        iv = enc[:AES.block_size]
+        cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        return self._unpad(cipher.decrypt(enc[AES.block_size:])).decode('utf-8')
+
+    def _pad(self, s):
+        return s + (self.bs - len(s) % self.bs) * chr(self.bs - len(s) % self.bs)
+
+    @staticmethod
+    def _unpad(s):
+        return s[:-ord(s[len(s)-1:])]
 
 
 def hash_password(password: str) -> bytes:
     try:
         with open('config.txt', 'r') as config_file:
             salt = literal_eval(config_file.readlines()[1])
-        key = hashlib.pbkdf2_hmac('sha512', password.encode(), salt, 100000)
+        key = hashlib.pbkdf2_hmac('sha512', password.encode(), salt, 110637)
         return key
     except FileNotFoundError:
         recover()
@@ -40,20 +78,14 @@ def xor(x: bytes, y: bytes) -> bytes:
 
 
 def encrypt(text: str, password: str) -> bytes:
-    key = hash_password(password)
-    data = text.encode()
-    while len(key) < len(data):
-        key += key
-    cipher = xor(data, key)
+    obj = AESCipher(hash_password(password))
+    cipher = obj.encrypt(text)
     return cipher
 
 
 def decrypt(cipher: bytes, password: str) -> str:
-    key = hash_password(password)
-    while len(key) < len(cipher):
-        key += key
-    data = xor(cipher, key)
-    text = data.decode()
+    obj = AESCipher(hash_password(password))
+    text = obj.decrypt(cipher)
     return text
 
 
@@ -140,7 +172,7 @@ def get_descriptions(password: str) -> list:
 
 
 def get_string_time() -> str:
-    return time.asctime().split(' ')[4]
+    return time.asctime().split(' ')[3]
 
 
 def generate_password_dialog(information_name) -> None:
@@ -203,7 +235,7 @@ def is_secure_password(password: str) -> bool:
     if len(password) >= 16:
         score += 1
     if len(password) >= 64:
-        score += 8
+        score += 4
     for i in ['q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'y', 'x',
               'c', 'v', 'b', 'n', 'm']:
         if i in password:
