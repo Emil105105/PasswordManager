@@ -1,5 +1,5 @@
 PasswortManager
-ruhezustand
+Ruhezustand
 beenden
 Name
 Url
@@ -12,10 +12,10 @@ verstecken
 generieren
 bearbeiten
 Einstellungen
-Über
+über
 hinzufügen
 Copyright(c) 2020, 2021 Martin S. Merkli
-Dieses Programm ist freie (bezogen auf Freiheit) und quelloffene Software und lizenzsiert unter der GNU GPL3. Besuchen Sie <https://www.gnu.org/licenses/> für mehr Informationen.
+Dieses Programm ist freie (bezogen auf Freiheit) und quelloffene Software und lizenziert unter der GNU GPL3. Besuchen Sie <https://www.gnu.org/licenses/> für mehr Informationen.
 Willkommen
 Geben Sie ein Passwort ein:
 Das Passwort ist sicher.
