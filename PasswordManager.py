@@ -29,12 +29,21 @@ def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 
-install('pycryptodome')
-install('tk')
-from Crypto.Cipher import AES
-from Crypto import Random
-import tkinter as tk
-from tkinter import messagebox
+try:
+    from Crypto.Cipher import AES
+    from Crypto import Random
+except ModuleNotFoundError:
+    install('pycryptodome')
+    from Crypto.Cipher import AES
+    from Crypto import Random
+try:
+    import tkinter as tk
+    from tkinter import messagebox
+except ModuleNotFoundError:
+    install('tk')
+    import tkinter as tk
+    from tkinter import messagebox
+
 
 
 class AESCipher(object):
